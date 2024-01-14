@@ -16,11 +16,11 @@ public class ServerListener extends Thread {
     try {
       while (true) {
         String messageReceived = this.objInStream.readUTF();
-        System.out.println("-> " + messageReceived);
+        System.out.println(messageReceived);
       }
 
     } catch (IOException e2) {
-      System.out.println("Se ha dejado de escuchar los envíos del servidor.");
+      System.out.println("Has salido del chat <:( ");
     }
   }
 }

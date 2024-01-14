@@ -7,8 +7,9 @@ public class Messages implements Serializable{
     private ArrayList<String> allMessages = new ArrayList<>();
 
     public synchronized void showAllMessages(){
+        System.out.println("\u001B[32mMensajes escritos hasta ahora : \u001B[0m");
         for (String message : allMessages) {
-            System.out.println( "-->" + message);
+            System.out.println(message);
         }
 
     }

@@ -37,7 +37,7 @@ public class ClientApp {
         ServerListener serverListener = new ServerListener(dataInStream);
         serverListener.start();
 
-        while (!userInput.equals(LOGGOUT_OPTION)) {
+        while (!userInput.equals(LOGGOUT_OPTION) && !socket.isClosed()) {
             userInput = SCANNER.nextLine();
             dataOutStream.writeUTF(userInput);
         }
