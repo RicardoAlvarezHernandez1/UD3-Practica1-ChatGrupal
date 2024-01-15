@@ -30,7 +30,7 @@ public class ServerApp {
             connectedDataOutputStreamList.add(clientDataOutStream);
             DataInputStream dataInStream = new DataInputStream(clientSocket.getInputStream());
 
-            ClientHandler clientHandler = new ClientHandler(clientSocket , dataInStream, clientDataOutStream, connectedDataOutputStreamList, messages);
+            ClientHandler clientHandler = new ClientHandler(dataInStream, clientDataOutStream, connectedDataOutputStreamList, messages);
             clientHandler.start();
         }
 
