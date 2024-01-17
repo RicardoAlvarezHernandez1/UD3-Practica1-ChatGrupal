@@ -46,16 +46,19 @@ public class ClientHandler extends Thread{
         
 
         // Enviamos el mensaje a todos los demás clientes
+        if (!messageReceived.startsWith("msg:")){
+          clientDataOutStream.writeUTF("\u001B[33mError al enviar el mensaje, vuelva a escrbirlo usando el comando msg: o para salir del chat con el comando bye\u001B[0m");
+        }
+
+
         for (DataOutputStream otherDataOutputStream : connectedDataOutputStreamList) {
-          if (!messageReceived.equals("bye")){
-            if (!messageReceived.startsWith("msg:") && otherDataOutputStream == clientDataOutStream){
-              otherDataOutputStream.writeUTF("\u001B[31mError al enviar el mensaje, vuelva a escrbirlo usando el comando msg: o para salir del chat con el comando bye\u001B[0m");
-            }else if (messageReceived.startsWith("msg:")){
-              otherDataOutputStream.writeUTF(messageFormated);
-            }
-          }else{
+          
+          if (messageReceived.equals("bye")) {
             otherDataOutputStream.writeUTF( username + " se fue del chat :(");
+          }else if (messageReceived.startsWith("msg:")){
+            otherDataOutputStream.writeUTF(messageFormated);
           }
+
         }
       }
 
