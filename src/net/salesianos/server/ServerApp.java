@@ -21,7 +21,6 @@ public class ServerApp {
             System.out.println("Esperando conexión...");
             Socket clientSocket = serverSocket.accept();
             System.out.println("CONEXION ESTABLECIDA");
-            System.out.println(messages.getAllMessages().size());
 
             ObjectOutputStream clientObjectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             clientObjectOutputStream.writeObject(messages);

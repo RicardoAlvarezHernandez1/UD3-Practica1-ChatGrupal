@@ -42,11 +42,9 @@ public class ClientHandler extends Thread{
        Utils.sendMessagesToClients(messageReceived, messageFormated, username, connectedDataOutputStreamList, clientDataOutStream);
       }
 
-    } catch (EOFException eofException) {
+    } catch (IOException e) {
       this.connectedDataOutputStreamList.remove(this.clientDataOutStream);
       System.out.println("CERRANDO CONEXIÓN CON " + username.toUpperCase());
-    } catch (IOException e) {
-      System.out.println("Error");
     }
 
   }
